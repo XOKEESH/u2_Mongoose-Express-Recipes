@@ -4,14 +4,18 @@ const cuisineController = require('./controllers/cuisineController')
 const directionsController = require('./controllers/directionsController')
 const recipeController = require('./controllers/recipeController')
 const bodyParser = require('body-parser')
-//const logger = require('morgan')
+const logger = require('morgan')
+const cors = require('cors')
+
 
 const PORT = process.env.PORT || 3001
 
 const app = express()
 
-//app.use(logger('dev'))
+app.use(logger('dev'))
 app.use(bodyParser.json())
+app.use(cors())
+app.use(express.json())
 
 app.listen(PORT, () => {
     console.log(`express server running on ${PORT}`)
